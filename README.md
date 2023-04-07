@@ -6,12 +6,12 @@ NMID is a Chrome extension that allows you to download images from the nexus mod
 ### Installation
 Follow the steps below to install the extension:
 
-- Download the [nmid.crx](nmid.crx) file.
+- Download the [latest release](https://github.com/gkalian/nmid/releases).
+- Unpack nmid.zip
 - Open Google Chrome on your computer.
 - Type "chrome://extensions/" in the address bar and press Enter.
 - On the Extensions page, check the "Developer mode" checkbox in the top-right corner.
-- Drag and drop the .crx file onto the Extensions page, or click the "Load unpacked" button and select the folder containing the .crx file.
-- Click "Add Extension" when prompted to confirm the installation.
+- Click the "Load unpacked" button and select the proper folder.
 - The extension should now be installed and ready to use.
 
 ### Credits
