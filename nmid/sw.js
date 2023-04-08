@@ -23,9 +23,9 @@ function handleDownload(list, index, image_path) {
     let filename = url.substr(url.lastIndexOf("/") + 1);
     let filepath = `Nexus Image Downloader`;
     if (image_path) {
-        filepath = `Nexus Image Downloader/${filename}`;
+        filepath = `NMID/${filename}`;
     } else {
-        filepath = `Nexus Image Downloader/${gameName}_${gameId}/${modId}_${modName}/${filename}`;
+        filepath = `NMID/${gameName}_${gameId}/${modId}_${modName}/${filename}`;
     }
     chrome.downloads.download({
             url: url,
