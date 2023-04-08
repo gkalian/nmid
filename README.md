@@ -15,7 +15,7 @@ Follow the steps below to install the extension:
 - The extension should now be installed and ready to use.
 
 ### Credits
-- NMID is a separate version/fork of the [nexus-mod-image-downloader](https://github.com/lazytwinkletoes/nexus-mod-image-downloader) with additional functionality and an extra button for downloading images. We would like to thank lazytwinkletoes for their contribution.
+- NMID is a separate version/fork of the [nexus-mod-image-downloader](https://github.com/lazytwinkletoes/nexus-mod-image-downloader) with additional functionality and an extra button for downloading images. 
 - The NexusMods icon used in the extension was sourced [from PngEgg](https://www.pngegg.com/en/png-ibdop).
 - Lastly, to modify the original extension, I used ChatGPT as I am not a JS developer. 
 This Readme also was written with the help of ChatGPT.
