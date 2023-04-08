@@ -16,8 +16,8 @@ Follow the steps below to install the extension:
 
 ### Usage
 
-- Clicking "Only pictures" will save the images to the `../NMID/` folder.
-- Clicking "Full folder structure" will save the images according to their respective game and mod name in the `NMID\GAMENAME_ID\ID_MODNAME` folder structure.
+- Clicking "Only pictures" will save the images to the `../NMID/` folder. 
+- Clicking "Full folder structure" will save the images according to their respective game and mod name in the `../NMID/GAMENAME_ID/ID_MODNAME` folder structure.
 
 ### Credits
 - NMID is a separate version/fork of the [nexus-mod-image-downloader](https://github.com/lazytwinkletoes/nexus-mod-image-downloader) with additional functionality and an extra button for downloading images. 
