@@ -1,59 +1,40 @@
-// This script gets injected into any opened page whose URL matches the pattern defined in the manifest (see "content_script" key).
+// console.log("NMID script loaded");
 
-console.log("fg script loaded");
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-    console.log(request);
-    if (request.from != "nexus-image-downloader-popup") {
-        sendResponse({
-            name: "from-fg",
-        });
-        console.log("response sent");
+    if (request.from !== "nexus-image-downloader-popup") {
+        sendResponse({ name: "from-fg" });
         return true;
     }
 
-    let imageList = [];
+    const { user_image, image_path } = request;
 
-	let list = document.querySelectorAll("ul.thumbgallery.gallery.clearfix li");
-	list.forEach((item) => {
-		imageList.push(item.dataset.src);
-	});
-	
+    const imageList = Array.from(
+        document.querySelectorAll("ul.thumbgallery.gallery.clearfix li"),
+        item => item.dataset.src
+    );
+
     console.log(imageList);
 
-    let gameId = "UnknownGameId" + new Date()
-        .getUTCMilliseconds();
-    let modId = "UnknownModId" + new Date()
-        .getUTCMilliseconds();
-    let gameName = "UnknownGameName" + new Date()
-        .getUTCMilliseconds();
-    let modName = "UnknownModName" + new Date()
-        .getUTCMilliseconds();
+    const dataElement = document.querySelector("section#section.modpage");
+    const defaults = {
+        gameId: `UnknownGameId${Date.now()}`,
+        modId: `UnknownModId${Date.now()}`,
+        gameName: document.querySelector('.nav-current-game a')?.getAttribute('title') || `UnknownGameName${Date.now()}`,
+        modName: document.querySelector("#pagetitle h1")?.textContent || `UnknownModName${Date.now()}`
+    };
 
-    let dataElement = document.querySelector("section#section.modpage");
-    let titleDiv = document.querySelector(".game-name");
-    let modNameDiv = document.querySelector("#pagetitle h1");
-
-    gameName = titleDiv.textContent;
-    modName = modNameDiv.textContent;
-    console.log(dataElement.dataset);
-    if (dataElement && dataElement.dataset) {
-        if (dataElement.dataset.gameId) {
-            gameId = dataElement.dataset.gameId;
-        }
-        if (dataElement.dataset.modId) {
-            modId = dataElement.dataset.modId;
-        }
-    }
+    const gameId = dataElement?.dataset?.gameId || defaults.gameId;
+    const modId = dataElement?.dataset?.modId || defaults.modId;
 
     sendResponse({
         from: "fg",
-        user_image: request.user_image,
-		image_path: request.image_path,
+        user_image,
+        image_path,
         urlList: imageList,
-        gameId: gameId,
-        modId: modId,
-        gameName: gameName,
-        modName: modName,
+        gameId,
+        modId,
+        gameName: defaults.gameName,
+        modName: defaults.modName
     });
 });
